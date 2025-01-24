@@ -88,6 +88,7 @@ body {
   --color-dark-other: #282829;
   --color-white: #ffffff;
   --color-header-bg: #323232;
+  --color-divider: #55565a;
 }
 
 .visually-hidden {
@@ -147,7 +148,7 @@ body {
 }
 
 .banner {
-  height: 90dvh;
+  height: 95dvh;
   top: 0;
   padding-left: 160px;
   display: flex;
@@ -159,6 +160,7 @@ body {
   flex-direction: column;
   gap: 48px;
   color: var(--color-white);
+  padding-bottom: 50px;
 }
 .banner-img {
   height: auto;
@@ -219,12 +221,96 @@ body {
   border-radius: 4px;
   transition: all 0.3s ease;
 }
-.banner-button:active {
+.banner-button:active,
+.highlights-button:active {
   scale: 0.96;
 }
 
+.highlights-and-form {
+  background-color: var(--color-dark-other);
+  padding-block: 100px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.highlights {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.highlights-img-left,
+.highlights-img-right {
+  flex: 1;
+  width: 30%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+.highlights-list-wrapper {
+  flex: 2;
+  height: 100%;
+  padding: 36px 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 80px;
+  justify-content: space-between;
+}
+.highlights-item {
+  font-family: var(--font-arial);
+  color: var(--color-white);
+  font-size: clamp(18px, 5vw, 24px);
+  text-align: justify;
+  position: relative;
+  padding-left: 87px;
+}
+.highlights-item:not(:last-of-type) {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.highlights-item:not(:first-of-type) {
+  padding-top: 32px;
+}
+.highlights-item::before {
+  content: '';
+  display: inline-block;
+  background-image: url('./imgs/icons/high-icon.svg');
+  width: 58px;
+  height: 47px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.highlights-item:not(:first-of-type)::before {
+  top: 32px;
+}
+.highlights-button {
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--font-arial);
+  font-weight: 700;
+  font-size: clamp(16px, 5vw, 20px);
+  background-color: var(--color-white);
+  color: var(--color-dark-main);
+  padding: 32px 52px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.form {
+  height: 500px;
+  border: 1px solid red;
+}
+
 @media (hover: hover) {
-  .banner-button:hover {
+  .banner-button:hover,
+  .highlights-button:hover {
     background-color: var(--color-header-bg);
     opacity: 90%;
     color: var(--color-white);
@@ -239,6 +325,16 @@ body {
   .banner {
     padding-left: 120px;
     height: 95dvh;
+  }
+  .highlights-list-wrapper {
+    gap: 60px;
+  }
+  .highlights-item {
+    padding-left: 60px;
+  }
+  .highlights-item::before {
+    width: 42px;
+    height: 35px;
   }
 }
 @media (max-width: 1600px) {
@@ -255,7 +351,8 @@ body {
   .benefits {
     gap: 20px;
   }
-  .banner-button {
+  .banner-button,
+  .highlights-button {
     padding: 20px 40px;
   }
 }
@@ -274,6 +371,12 @@ body {
     object-fit: cover;
     object-position: bottom;
   }
+  .highlights-img-left {
+    width: 40%;
+  }
+  .highlights-img-right {
+    display: none;
+  }
 }
 @media (max-width: 920px) {
   .header-menu-list {
@@ -291,16 +394,31 @@ body {
   .banner-info-wrapper {
     padding: 200px 88px 0;
   }
-  .banner-img {
+  .banner-img,
+  .highlights-img-right {
     display: block;
     width: 100%;
     max-height: 400px;
     object-fit: cover;
     object-position: bottom;
   }
+  .highlights-and-form {
+    padding-block: 40px;
+  }
+  .highlights-list-wrapper {
+    padding-inline: 88px;
+  }
+  .highlights {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .highlights-img-left {
+    display: none;
+  }
 }
 @media (max-width: 760px) {
-  .header {
+  .header,
+  .highlights-list-wrapper {
     padding-inline: 40px;
   }
   .banner-info-wrapper {
@@ -347,10 +465,12 @@ body {
     position: relative;
     top: -10px;
   }
-  .banner-img {
+  .banner-img,
+  .highlights-img-right {
     max-height: 280px;
   }
-  .banner-button {
+  .banner-button,
+  .highlights-button {
     padding: 16px 20px;
   }
 }
@@ -370,6 +490,12 @@ body {
     background-image: none;
     color: var(--color-white);
     top: 22px;
+  }
+  .highlights-item {
+    padding-left: 0;
+  }
+  .highlights-item::before {
+    display: none;
   }
 }
 @media (max-width: 480px) {
@@ -393,7 +519,8 @@ body {
 }
 @media (max-width: 360px) {
   .header,
-  .banner-info-wrapper {
+  .banner-info-wrapper,
+  .highlights-list-wrapper {
     padding-inline: 20px;
   }
   .banner-info-wrapper {
