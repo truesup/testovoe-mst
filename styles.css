@@ -79,8 +79,7 @@ body {
 
 :root {
   --font-prata: 'Prata', serif;
-  --font-arial-regular: 'Arial', sans-serif;
-  --font-arial-italic: 'Arial', sans-serif;
+  --font-arial: 'Arial', sans-serif;
   --weight-normal: 400;
   --style-normal: normal;
   --style-italic: italic;
@@ -91,8 +90,13 @@ body {
   --color-header-bg: #323232;
 }
 
+.visually-hidden {
+  display: none;
+}
+
 body {
   background-color: var(--color-dark-main);
+  font-weight: var(--weight-normal);
   min-height: 4000px;
 }
 
@@ -113,25 +117,21 @@ body {
 .header-expanded {
   justify-content: space-between;
   background-color: var(--color-header-bg);
-  opacity: 90%;
+  opacity: 95%;
 }
 .header-logo {
+  text-align: center;
   font-family: var(--font-prata);
-  font-size: 36px;
+  font-size: clamp(24px, 2vw + 1rem, 36px);
   text-decoration: none;
   color: var(--color-white);
   text-transform: uppercase;
   cursor: default;
 }
-.header-logo p {
-  margin: 0;
-}
-
 .header-menu-list {
-  font-family: var(--font-arial-italic);
-  font-weight: var(--weight-normal);
+  font-family: var(--font-arial);
   font-style: var(--style-italic);
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 18px);
   display: flex;
   align-items: center;
   gap: 28px;
@@ -147,10 +147,88 @@ body {
 }
 
 .banner {
-  width: 100dvw;
+  height: 90dvh;
+  top: 0;
+  padding-left: 160px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.banner-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  color: var(--color-white);
+}
+.banner-img {
+  height: auto;
+  width: 50%;
+}
+.banner-info-title {
+  font-family: var(--font-prata);
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 96%;
+}
+.banner-info-subtitle {
+  font-family: var(--font-arial);
+  font-size: clamp(24px, 3vw, 50px);
+}
+.banner-info-benefits-button {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.benefit {
+  font-family: var(--font-arial);
+  font-size: clamp(18px, 2vw, 24px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding-left: 65px;
+  position: relative;
+}
+.benefit span {
+  font-family: var(--font-prata);
+  font-size: clamp(28px, 2vw, 40px);
+}
+.benefit::before {
+  content: '';
+  display: inline-block;
+  background-image: url('./imgs/icons/benefit-icon.svg');
+  width: 39px;
+  height: 37px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.banner-button {
+  text-decoration: none;
+  font-family: var(--font-arial);
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--color-dark-main);
+  padding: 32px 50px;
+  background-color: var(--color-white);
+  width: fit-content;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.banner-button:active {
+  scale: 0.96;
+}
+
+@media (hover: hover) {
+  .banner-button:hover {
+    background-color: var(--color-header-bg);
+    opacity: 90%;
+    color: var(--color-white);
+  }
 }
 
 @media (max-width: 1760px) {
@@ -158,18 +236,43 @@ body {
     padding-inline: 120px;
     gap: 100px;
   }
+  .banner {
+    padding-left: 120px;
+    height: 95dvh;
+  }
 }
 @media (max-width: 1600px) {
   .header {
     padding-inline: 88px;
     gap: 60px;
   }
+  .banner {
+    padding-left: 88px;
+  }
+  .banner-info-wrapper {
+    gap: 28px;
+  }
+  .benefits {
+    gap: 20px;
+  }
+  .banner-button {
+    padding: 20px 40px;
+  }
 }
 @media (max-width: 1480px) {
   .header {
+    padding-block: 32px;
     background-color: var(--color-header-bg);
     justify-content: space-between;
     gap: auto;
+  }
+}
+@media (max-width: 1199px) {
+  .banner-img {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
   }
 }
 @media (max-width: 920px) {
@@ -177,9 +280,31 @@ body {
     gap: 20px;
   }
 }
+@media (max-width: 800px) {
+  .banner {
+    height: auto;
+    padding-left: 0;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+  }
+  .banner-info-wrapper {
+    padding: 200px 88px 0;
+  }
+  .banner-img {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: bottom;
+  }
+}
 @media (max-width: 760px) {
   .header {
     padding-inline: 40px;
+  }
+  .banner-info-wrapper {
+    padding-left: 40px;
   }
   .header-menu-list {
     display: none;
@@ -193,13 +318,11 @@ body {
     width: 100%;
     transition: all 0.3s ease;
   }
-
   .burger-menu {
     display: block;
     cursor: pointer;
     z-index: 999;
   }
-
   .burger-menu span {
     display: block;
     width: 30px;
@@ -208,24 +331,75 @@ body {
     margin: 6px 0;
     transition: all 0.3s ease;
   }
-
   .header-menu-list.active {
     display: flex;
   }
-
   .burger-menu.active span:nth-child(1) {
     transform: rotate(45deg);
     position: relative;
     top: 10px;
   }
-
   .burger-menu.active span:nth-child(2) {
     opacity: 0;
   }
-
   .burger-menu.active span:nth-child(3) {
     transform: rotate(-45deg);
     position: relative;
     top: -10px;
+  }
+  .banner-img {
+    max-height: 280px;
+  }
+  .banner-button {
+    padding: 16px 20px;
+  }
+}
+@media (max-width: 600px) {
+  .banner-info-wrapper {
+    padding-inline: 40px;
+  }
+  .banner-info-benefits-button {
+    gap: 24px;
+  }
+  .benefit {
+    padding-left: 20px;
+  }
+  .benefit::before {
+    content: '•';
+    font-size: 24px;
+    background-image: none;
+    color: var(--color-white);
+    top: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .banner-info-wrapper {
+    gap: 20px;
+  }
+  .benefit {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4px;
+  }
+  .benefit:not(:last-child) {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-header-bg);
+  }
+  .benefit::before {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .header,
+  .banner-info-wrapper {
+    padding-inline: 20px;
+  }
+  .banner-info-wrapper {
+    padding-top: 160px;
+  }
+  .banner-info-title {
+    line-height: 120%;
   }
 }
