@@ -30,7 +30,7 @@
       </nav>
     </header>
 
-    <section class="banner">
+    <section id="home" class="banner">
       <div class="banner-info-wrapper">
         <h1 class="visually-hidden">
           Siam Living. Find Your Dream Property in Thailand
@@ -49,10 +49,16 @@
               up to<span>&nbsp;17%&nbsp;</span>higher return on investment
             </p>
           </div>
-          <a href="#" class="banner-button">Explore Properties</a>
+          <a id="advantages" href="/" class="banner-button"
+            >Explore Properties</a
+          >
         </div>
       </div>
-      <img src="./imgs/banner-img.jpg" alt="" class="banner-img" />
+      <img
+        src="./imgs/banner-img.jpg"
+        alt="Property image"
+        class="banner-img"
+        loading="lazy" />
     </section>
 
     <section class="highlights-and-form">
@@ -60,7 +66,11 @@
         <h2 class="visually-hidden">
           Discover Our Advantages Over Competitors.
         </h2>
-        <img src="./imgs/high-left.jpg" alt="" class="highlights-img-left" />
+        <img
+          src="./imgs/high-left.jpg"
+          alt="Property image"
+          class="highlights-img-left"
+          loading="lazy" />
         <div class="highlights-list-wrapper">
           <div class="highlights-list">
             <p class="highlights-item">
@@ -80,24 +90,43 @@
               suburbs.
             </p>
           </div>
-          <a href="#" class="highlights-button">Explore Properties</a>
+          <a id="contact" href="#" class="highlights-button"
+            >Explore Properties</a
+          >
         </div>
-        <img src="./imgs/high-right.jpg" alt="" class="highlights-img-right" />
+        <img
+          src="./imgs/high-right.jpg"
+          alt="Property image"
+          class="highlights-img-right"
+          loading="lazy" />
       </div>
       <div class="form">
         <h2 class="visually-hidden">
           Get in touch with us — we're always here to help!
         </h2>
-        <img src="./imgs/form-bg.jpg" alt="" class="form-bg" />
-        <img src="./imgs/lady1.png" alt="" class="form-lady" />
+        <img src="./imgs/form-bg.jpg" alt="Property image" class="form-bg" />
+        <img
+          src="./imgs/lady1.png"
+          alt="Our employee Carla"
+          class="form-lady" />
 
         <form class="contact-form">
           <p class="form-title">
             Let's keep in touch <br />
             <span>Just fill the form</span>
           </p>
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="E-mail" required />
+          <input
+            type="text"
+            placeholder="Name"
+            required
+            pattern="^[A-Za-z\s]{2,}$"
+            title="Name must be at least 2 characters long and can only contain letters and spaces" />
+          <input
+            type="email"
+            placeholder="E-mail"
+            required
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            title="Please enter a valid email address" />
           <div class="privacy-wrapper">
             <input type="checkbox" id="privacy" />
             <label for="privacy">I accept privacy policy.</label>
@@ -106,6 +135,66 @@
         </form>
       </div>
     </section>
+
+    <!-- здесь самая нижняя строка, где privacy policy, terms of use возможно нужно было сделать ссылками, потому что они наверняка должны куда-то вести, но я сделал просто параграфом, потому что верстка статичная сейчас -->
+    <footer class="footer">
+      <nav class="footer-menu">
+        <ul class="footer-menu-list">
+          <li class="footer-menu-item">
+            <a href="#home" class="footer-menu-link is-current">home</a>
+          </li>
+          <li class="footer-menu-item">
+            <a href="#advantages" class="footer-menu-link">advantages</a>
+          </li>
+          <li class="footer-menu-item">
+            <a href="#contact" class="footer-menu-link">contact</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <div class="footer-upper-row">
+          <p class="footer-logo">Siam Living</p>
+          <div class="footer-contacts-list">
+            <a href="#"
+              ><img
+                src="./imgs/icons/instagram.svg"
+                alt=""
+                class="footer-social"
+            /></a>
+            <a href="#"
+              ><img src="./imgs/icons/tiktok.svg" alt="" class="footer-social"
+            /></a>
+            <a href="#"
+              ><img
+                src="./imgs/icons/linkedin.svg"
+                alt=""
+                class="footer-social"
+            /></a>
+            <a href="#"
+              ><img
+                src="./imgs/icons/facebook.svg"
+                alt=""
+                class="footer-social"
+            /></a>
+            <a href="#"
+              ><img
+                src="./imgs/icons/telegram.svg"
+                alt=""
+                class="footer-social"
+            /></a>
+            <a href="#"
+              ><img src="./imgs/icons/youtube.svg" alt="" class="footer-social"
+            /></a>
+          </div>
+          <a href="#" class="footer-button">order</a>
+        </div>
+        <div class="footer-lower-row">
+          <p class="footer-copyright">© 2024, Copyright.</p>
+          <p class="footer-privacy">Privacy Policy</p>
+          <p class="footer-terms">Terms of Use</p>
+        </div>
+      </div>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>
