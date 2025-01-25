@@ -89,6 +89,7 @@ body {
   --color-white: #ffffff;
   --color-header-bg: #323232;
   --color-divider: #55565a;
+  --color-green: #38535d;
 }
 
 .visually-hidden {
@@ -304,16 +305,94 @@ body {
 }
 
 .form {
-  height: 500px;
-  border: 1px solid red;
+  margin-inline: 160px;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  border-radius: 30px;
+  position: relative;
+}
+.form-bg {
+  position: absolute;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.form-lady {
+  position: absolute;
+  right: 90px;
+  bottom: 0;
+  height: 118%;
+  width: 40%;
+  object-fit: cover;
+  object-position: top;
+}
+.contact-form {
+  margin: 72px 132px;
+  width: 40%;
+  box-sizing: border-box;
+}
+.form-title {
+  font-family: var(--font-prata);
+  font-size: clamp(24px, 5vw, 54px);
+  color: var(--color-green);
+  margin-bottom: 44px;
+  line-height: 70px;
+}
+.privacy-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+input[type='text'],
+input[type='email'],
+label[for='privacy'] {
+  font-family: var(--font-arial);
+}
+input[type='text'],
+input[type='email'] {
+  width: 100%;
+  display: block;
+  font-size: clamp(18px, 5vw, 24px);
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  padding: 12px 36px;
+  box-sizing: border-box;
+}
+input[type='text'] {
+  margin-bottom: 12px;
+}
+input[type='checkbox'] {
+  margin-block: 28px;
+  width: 24px;
+  aspect-ratio: 1;
+}
+.form-button {
+  display: block;
+  width: 100%;
+  padding-block: 32px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-arial);
+  font-size: clamp(18px, 2vw, 24px);
+  text-transform: uppercase;
+  background-color: var(--color-dark-main);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 @media (hover: hover) {
   .banner-button:hover,
   .highlights-button:hover {
     background-color: var(--color-header-bg);
-    opacity: 90%;
     color: var(--color-white);
+  }
+  .form-button:hover {
+    background-color: var(--color-green);
   }
 }
 
@@ -336,6 +415,12 @@ body {
     width: 42px;
     height: 35px;
   }
+  .form {
+    margin-inline: 120px;
+  }
+  .form-title {
+    margin-bottom: 32px;
+  }
 }
 @media (max-width: 1600px) {
   .header {
@@ -352,8 +437,22 @@ body {
     gap: 20px;
   }
   .banner-button,
-  .highlights-button {
+  .highlights-button,
+  .form-button {
     padding: 20px 40px;
+  }
+  .form {
+    margin-inline: 88px;
+  }
+  .contact-form {
+    margin: 56px 112px;
+  }
+  .form-lady {
+    right: 60px;
+  }
+  input[type='text'],
+  input[type='email'] {
+    padding: 8px 24px;
   }
 }
 @media (max-width: 1480px) {
@@ -362,6 +461,24 @@ body {
     background-color: var(--color-header-bg);
     justify-content: space-between;
     gap: auto;
+  }
+}
+@media (max-width: 1370px) {
+  .form-bg {
+    width: 35%;
+  }
+  .form-lady {
+    right: 30px;
+  }
+  .contact-form {
+    width: 50%;
+    margin-inline: 60px;
+  }
+  .form-title span {
+    display: none;
+  }
+  .form-lady {
+    right: 10px;
   }
 }
 @media (max-width: 1199px) {
@@ -378,9 +495,28 @@ body {
     display: none;
   }
 }
+@media (max-width: 1130px) {
+  .form-bg,
+  .form-lady {
+    display: none;
+  }
+  .contact-form {
+    width: auto;
+    text-align: center;
+  }
+  .form-title {
+    margin-bottom: 20px;
+  }
+  #privacy {
+    margin-block: 16px;
+  }
+}
 @media (max-width: 920px) {
   .header-menu-list {
     gap: 20px;
+  }
+  .contact-form {
+    margin: 36px;
   }
 }
 @media (max-width: 800px) {
@@ -414,6 +550,9 @@ body {
   }
   .highlights-img-left {
     display: none;
+  }
+  .highlights-and-form {
+    gap: 40px;
   }
 }
 @media (max-width: 760px) {
@@ -470,8 +609,16 @@ body {
     max-height: 280px;
   }
   .banner-button,
-  .highlights-button {
+  .highlights-button,
+  .form-button {
     padding: 16px 20px;
+  }
+  .form {
+    margin-inline: 40px;
+    border-radius: 10px;
+  }
+  .form-title {
+    margin-bottom: 12px;
   }
 }
 @media (max-width: 600px) {
@@ -516,6 +663,9 @@ body {
   .benefit::before {
     display: none;
   }
+  .contact-form {
+    margin: 16px;
+  }
 }
 @media (max-width: 360px) {
   .header,
@@ -528,5 +678,8 @@ body {
   }
   .banner-info-title {
     line-height: 120%;
+  }
+  .form {
+    margin-inline: 20px;
   }
 }
